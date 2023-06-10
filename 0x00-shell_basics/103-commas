@@ -1,3 +1,2 @@
 #!/bin/bash
-ls -1p | { [System.Collections.ArrayList]$files = @(); [System.Collections.ArrayList]$directories = @(); foreach ($item in $_) { if ($item -match '^[A-Za-z0-9]') { if ($item -like '*/*') { $directories.Add($item+'/') } else { $files.Add($item) } } } $directories.Sort(); $files.Sort(); $directories.InsertRange(0,('.', '..')); $directories + $files -join ',' }
-
+ls -p1 | LC_COLLATE=C sort | awk 'BEGIN {ORS=","} {print ($0 ~ /\// ? $0 : $0 "/")}' | sed 's/,$/\n/'
