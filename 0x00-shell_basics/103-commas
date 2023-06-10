@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -p1 | LC_COLLATE=C sort | awk 'BEGIN {ORS=","} {print ($0 ~ /\// ? $0 : $0 "/")}' | sed 's/,$/\n/'
+ls -xmpa
