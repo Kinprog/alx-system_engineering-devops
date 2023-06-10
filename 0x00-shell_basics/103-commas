@@ -1,1 +1,2 @@
+#!/bin/bash
 ls -1a | awk '{print $0"/"}' | LC_COLLATE=C sort -n -k1.1 | tr '\n' ','; echo
